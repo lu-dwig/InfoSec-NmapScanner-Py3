@@ -32,6 +32,14 @@ elif resp == '2':
     print("Ip Status: " , scanner[ip_addr].state())
     print(scanner[ip_addr].all_protocols())
     print("Open Ports: " , scanner[ip_addr]['udp'].keys())
+elif resp == '3':
+    print("Nmap Version: ", scanner.nmap_version())
+    scanner.scan(ip_addr,"1-1024",'-v -sS -sV -sC -A -O') #the # are port range to scan, the last part is the scan type
+    print(scanner.scaninfo())
+    if scanner.scaninfo()=='up':
+        print("Ip Status: " , scanner[ip_addr].state())
+        print(scanner[ip_addr].all_protocols())
+        print("Open Ports: " , scanner[ip_addr]['tcp'].keys())  #display all open ports
 
 
 resp_dict={'1':['-v -sS','tcp'],'2':['-v -sU','udp'],'3':['-v -sS -sV -sC -A -O','tcp']}
