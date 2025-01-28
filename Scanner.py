@@ -40,7 +40,8 @@ elif resp == '3':
         print("Ip Status: " , scanner[ip_addr].state())
         print(scanner[ip_addr].all_protocols())
         print("Open Ports: " , scanner[ip_addr]['tcp'].keys())  #display all open ports
-
+elif resp >= '4':
+    print("Invalid option, please enter a number between 1 and 3")
 
 resp_dict={'1':['-v -sS','tcp'],'2':['-v -sU','udp'],'3':['-v -sS -sV -sC -A -O','tcp']}
 if resp not in resp_dict.keys():
